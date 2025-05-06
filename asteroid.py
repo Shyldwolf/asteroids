@@ -21,6 +21,7 @@ class Asteroid(CircleShape):
     
         if self.radius <= ASTEROID_MIN_RADIUS:
             return
+        
         new_radius = self.radius - ASTEROID_MIN_RADIUS
         random_angle = random.uniform(20, 50)
    
@@ -30,4 +31,6 @@ class Asteroid(CircleShape):
         for direction in [direction1, direction2]:
             new_asteroid = Asteroid(self.position.x, self.position.y, new_radius)
             new_asteroid.velocity = direction
-            self.containers[0].add(new_asteroid)
+            
+            new_asteroid.add(Asteroid.containers)  
+            
